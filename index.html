@@ -1,0 +1,1025 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>中文乱码字幕2020中文 - 修复工具与资源社区 | 视频字幕解决方案</title>
+<meta name="description" content="中文乱码字幕2020中文是专注于视频字幕乱码修复、编码转换与字幕资源分享的社区平台，提供2020中文乱码字幕工具、教程与案例，助力创作者解决字幕显示难题。">
+<style>
+  :root{
+    --bg:#0a0d14;
+    --bg2:#0f1420;
+    --bg3:#151c2c;
+    --card:#121926;
+    --line:#1f2a3d;
+    --line2:#2a3850;
+    --txt:#e6edf7;
+    --txt2:#9aabc4;
+    --txt3:#6b7c96;
+    --accent:#3ee0c0;
+    --accent2:#5b8cff;
+    --accent3:#ff6b9d;
+    --warn:#ffcc4d;
+    --grad:linear-gradient(120deg,#3ee0c0 0%,#5b8cff 55%,#a06bff 100%);
+    --radius:16px;
+    --mono:'SFMono-Regular',Consolas,'Liberation Mono',Menlo,monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);
+    color:var(--txt);
+    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;
+    line-height:1.7;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none}
+  img,svg{display:block;max-width:100%}
+  ::selection{background:rgba(62,224,192,.3);color:#fff}
+  .wrap{width:100%;max-width:1240px;margin:0 auto;padding:0 28px}
+  .mono{font-family:var(--mono)}
+
+  /* ---------- scrollbar ---------- */
+  ::-webkit-scrollbar{width:10px;height:10px}
+  ::-webkit-scrollbar-track{background:#0a0d14}
+  ::-webkit-scrollbar-thumb{background:#22304a;border-radius:8px;border:2px solid #0a0d14}
+  ::-webkit-scrollbar-thumb:hover{background:#31456b}
+
+  /* ---------- nav ---------- */
+  .nav{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    background:rgba(10,13,20,.72);
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+    border-bottom:1px solid transparent;
+    transition:border-color .3s,background .3s;
+  }
+  .nav.scrolled{border-bottom-color:var(--line);background:rgba(10,13,20,.92)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .brand{display:flex;align-items:center;gap:11px;font-weight:800;font-size:17px;letter-spacing:.2px}
+  .brand-mark{
+    width:34px;height:34px;border-radius:10px;flex:none;
+    background:var(--grad);display:grid;place-items:center;
+    box-shadow:0 0 24px rgba(62,224,192,.35);
+  }
+  .brand-mark svg{width:19px;height:19px}
+  .brand span small{display:block;font-size:10px;font-weight:500;color:var(--txt3);letter-spacing:1.6px;text-transform:uppercase;line-height:1}
+  .nav-links{display:flex;align-items:center;gap:30px}
+  .nav-links a{font-size:14px;color:var(--txt2);font-weight:500;transition:color .2s;position:relative}
+  .nav-links a:hover{color:var(--txt)}
+  .nav-links a::after{content:'';position:absolute;left:0;bottom:-6px;width:0;height:2px;background:var(--grad);border-radius:2px;transition:width .25s}
+  .nav-links a:hover::after{width:100%}
+  .nav-cta{
+    padding:9px 20px;border-radius:10px;font-size:13.5px;font-weight:600;
+    background:var(--grad);color:#061018;transition:transform .2s,box-shadow .2s;
+    box-shadow:0 4px 18px rgba(62,224,192,.25);
+  }
+  .nav-cta:hover{transform:translateY(-1px);box-shadow:0 6px 24px rgba(62,224,192,.4)}
+  .nav-toggle{display:none;background:none;border:1px solid var(--line2);color:var(--txt);width:40px;height:40px;border-radius:10px;font-size:18px;cursor:pointer}
+
+  /* ---------- hero ---------- */
+  .hero{position:relative;padding:150px 0 90px;overflow:hidden}
+  .hero-bg{
+    position:absolute;inset:0;z-index:0;pointer-events:none;
+    background:
+      radial-gradient(ellipse 60% 55% at 18% 12%,rgba(62,224,192,.14),transparent 60%),
+      radial-gradient(ellipse 55% 50% at 88% 8%,rgba(91,140,255,.16),transparent 62%),
+      radial-gradient(ellipse 50% 60% at 50% 100%,rgba(160,107,255,.09),transparent 65%);
+  }
+  .hero-grid{
+    position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.4;
+    background-image:linear-gradient(rgba(42,56,80,.35) 1px,transparent 1px),linear-gradient(90deg,rgba(42,56,80,.35) 1px,transparent 1px);
+    background-size:56px 56px;
+    mask-image:radial-gradient(ellipse 75% 65% at 50% 30%,#000 20%,transparent 78%);
+    -webkit-mask-image:radial-gradient(ellipse 75% 65% at 50% 30%,#000 20%,transparent 78%);
+  }
+  .hero-inner{position:relative;z-index:2;display:grid;grid-template-columns:1.08fr .92fr;gap:56px;align-items:center}
+  .badge{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:6px 14px 6px 8px;border-radius:999px;
+    background:rgba(62,224,192,.08);border:1px solid rgba(62,224,192,.28);
+    font-size:12.5px;color:var(--accent);font-weight:600;margin-bottom:26px;
+  }
+  .badge .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 10px var(--accent);animation:pulse 2s infinite}
+  @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.45;transform:scale(.8)}}
+  h1{
+    font-size:clamp(40px,5.2vw,68px);
+    line-height:1.06;font-weight:850;letter-spacing:-1.5px;margin-bottom:8px;
+  }
+  h1 .gtext{
+    background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;
+    display:inline-block;
+  }
+  .hero h2{
+    font-size:clamp(19px,2.2vw,25px);font-weight:600;color:var(--txt2);
+    letter-spacing:.2px;margin-bottom:22px;
+  }
+  .hero-desc{font-size:15.5px;color:var(--txt2);max-width:560px;margin-bottom:34px}
+  .hero-desc b{color:var(--txt);font-weight:600}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:44px}
+  .btn{
+    display:inline-flex;align-items:center;gap:9px;
+    padding:13px 26px;border-radius:12px;font-size:14.5px;font-weight:650;
+    transition:transform .2s,box-shadow .25s,background .2s,border-color .2s;cursor:pointer;border:none;
+  }
+  .btn svg{width:16px;height:16px}
+  .btn-primary{
+    background:var(--grad);color:#061018;
+    box-shadow:0 6px 26px rgba(62,224,192,.3);
+  }
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 34px rgba(62,224,192,.45)}
+  .btn-ghost{
+    background:rgba(255,255,255,.03);color:var(--txt);
+    border:1px solid var(--line2);
+  }
+  .btn-ghost:hover{background:rgba(255,255,255,.06);border-color:#3a4d6e;transform:translateY(-2px)}
+  .hero-stats{display:flex;gap:38px;flex-wrap:wrap}
+  .stat b{display:block;font-size:26px;font-weight:800;letter-spacing:-.5px;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .stat span{font-size:12.5px;color:var(--txt3);letter-spacing:.3px}
+
+  /* ---------- terminal card ---------- */
+  .term{
+    background:linear-gradient(160deg,#111a29,#0c1220);
+    border:1px solid var(--line2);border-radius:18px;overflow:hidden;
+    box-shadow:0 30px 80px -20px rgba(0,0,0,.8),0 0 0 1px rgba(62,224,192,.06);
+    transform:perspective(1200px) rotateY(-4deg) rotateX(2deg);
+    transition:transform .5s;
+  }
+  .term:hover{transform:perspective(1200px) rotateY(0) rotateX(0)}
+  .term-bar{display:flex;align-items:center;gap:8px;padding:12px 16px;background:rgba(255,255,255,.025);border-bottom:1px solid var(--line)}
+  .term-bar i{width:11px;height:11px;border-radius:50%;display:block}
+  .term-bar i:nth-child(1){background:#ff5f57}
+  .term-bar i:nth-child(2){background:#febc2e}
+  .term-bar i:nth-child(3){background:#28c840}
+  .term-title{margin-left:10px;font-size:12px;color:var(--txt3);font-family:var(--mono)}
+  .term-body{padding:20px 20px 24px;font-family:var(--mono);font-size:13px;line-height:2}
+  .term-body .ln{display:flex;gap:10px;white-space:nowrap;overflow:hidden}
+  .term-body .ln .c{color:var(--accent)}
+  .term-body .ln .w{color:var(--warn)}
+  .term-body .ln .e{color:#ff7b72}
+  .term-body .ln .ok{color:var(--accent)}
+  .term-body .ln .dim{color:var(--txt3)}
+  .garble{
+    background:rgba(255,107,157,.09);border:1px dashed rgba(255,107,157,.35);
+    border-radius:8px;padding:10px 14px;margin:12px 0;color:#ff9cbd;
+    letter-spacing:.5px;font-size:12.5px;word-break:break-all;
+  }
+  .garble.fixed{background:rgba(62,224,192,.07);border-color:rgba(62,224,192,.35);color:var(--accent)}
+  .term-progress{height:5px;border-radius:4px;background:#1b2436;overflow:hidden;margin-top:16px}
+  .term-progress i{display:block;height:100%;width:0;background:var(--grad);border-radius:4px;transition:width 2.4s cubic-bezier(.4,0,.2,1)}
+  .term-body .cursor{display:inline-block;width:8px;height:15px;background:var(--accent);vertical-align:-2px;animation:blink 1.1s steps(1) infinite;margin-left:2px}
+  @keyframes blink{50%{opacity:0}}
+
+  /* ---------- section common ---------- */
+  section{position:relative}
+  .sec-head{margin-bottom:52px;max-width:680px}
+  .sec-tag{
+    font-size:12px;font-weight:700;letter-spacing:2.4px;text-transform:uppercase;
+    color:var(--accent);margin-bottom:14px;display:flex;align-items:center;gap:10px;
+  }
+  .sec-tag::before{content:'';width:22px;height:2px;background:var(--grad);border-radius:2px}
+  .sec-head h2{font-size:clamp(27px,3.4vw,40px);font-weight:800;letter-spacing:-.8px;line-height:1.2;margin-bottom:14px}
+  .sec-head p{color:var(--txt2);font-size:15px}
+
+  /* ---------- features ---------- */
+  .features{padding:100px 0;background:linear-gradient(180deg,transparent,var(--bg2) 30%,var(--bg2) 70%,transparent)}
+  .feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .feat{
+    position:relative;background:var(--card);border:1px solid var(--line);
+    border-radius:var(--radius);padding:30px 26px;overflow:hidden;
+    transition:transform .3s,border-color .3s,box-shadow .3s;
+  }
+  .feat::before{
+    content:'';position:absolute;inset:0;border-radius:inherit;opacity:0;
+    background:radial-gradient(320px circle at var(--mx,50%) var(--my,0%),rgba(62,224,192,.1),transparent 70%);
+    transition:opacity .35s;
+  }
+  .feat:hover{transform:translateY(-5px);border-color:var(--line2);box-shadow:0 22px 50px -22px rgba(0,0,0,.9)}
+  .feat:hover::before{opacity:1}
+  .feat-ico{
+    width:46px;height:46px;border-radius:12px;display:grid;place-items:center;margin-bottom:20px;
+    background:linear-gradient(140deg,rgba(62,224,192,.16),rgba(91,140,255,.1));
+    border:1px solid rgba(62,224,192,.24);position:relative;z-index:1;
+  }
+  .feat-ico svg{width:22px;height:22px;stroke:var(--accent);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+  .feat h3{font-size:17px;font-weight:700;margin-bottom:10px;position:relative;z-index:1;letter-spacing:.2px}
+  .feat p{font-size:13.8px;color:var(--txt2);position:relative;z-index:1}
+  .feat .num{
+    position:absolute;top:18px;right:22px;font-family:var(--mono);font-size:12px;
+    color:var(--txt3);opacity:.55;font-weight:600;letter-spacing:1px;
+  }
+
+  /* ---------- demo / playground ---------- */
+  .demo{padding:100px 0}
+  .demo-shell{
+    background:var(--bg2);border:1px solid var(--line);border-radius:22px;overflow:hidden;
+    box-shadow:0 30px 80px -30px rgba(0,0,0,.85);
+  }
+  .demo-top{
+    display:flex;align-items:center;justify-content:space-between;gap:20px;
+    padding:18px 26px;border-bottom:1px solid var(--line);flex-wrap:wrap;
+  }
+  .demo-tabs{display:flex;gap:8px;flex-wrap:wrap}
+  .demo-tab{
+    padding:8px 16px;border-radius:9px;font-size:13px;font-weight:600;cursor:pointer;
+    background:transparent;border:1px solid var(--line2);color:var(--txt2);
+    transition:all .2s;font-family:inherit;
+  }
+  .demo-tab.active{background:rgba(62,224,192,.12);border-color:rgba(62,224,192,.45);color:var(--accent)}
+  .demo-tab:hover:not(.active){color:var(--txt);border-color:#3a4d6e}
+  .demo-main{display:grid;grid-template-columns:1fr 1fr;min-height:420px}
+  .demo-pane{padding:26px}
+  .demo-pane:first-child{border-right:1px solid var(--line)}
+  .pane-label{
+    font-size:11px;font-weight:700;letter-spacing:1.8px;text-transform:uppercase;
+    color:var(--txt3);margin-bottom:16px;display:flex;align-items:center;gap:8px;
+  }
+  .pane-label .led{width:7px;height:7px;border-radius:50%;background:var(--accent3);box-shadow:0 0 8px var(--accent3)}
+  .pane-label.ok .led{background:var(--accent);box-shadow:0 0 8px var(--accent)}
+  .code-block{
+    font-family:var(--mono);font-size:12.8px;line-height:1.9;
+    background:#0a0f19;border:1px solid var(--line);border-radius:12px;
+    padding:18px;min-height:250px;color:#c8d6ea;overflow:auto;
+    white-space:pre-wrap;word-break:break-all;
+  }
+  .code-block .k{color:#ff9cbd}
+  .code-block .s{color:#8ddb8d}
+  .code-block .c{color:#5c6f8c;font-style:italic}
+  .code-block.garbled{color:#ff9cbd;background:rgba(255,107,157,.04);border-color:rgba(255,107,157,.22)}
+  .demo-foot{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 26px;border-top:1px solid var(--line);flex-wrap:wrap}
+  .demo-meta{font-size:12.5px;color:var(--txt3);font-family:var(--mono);display:flex;gap:22px;flex-wrap:wrap}
+  .demo-meta b{color:var(--accent);font-weight:600}
+  .btn-sm{padding:9px 18px;font-size:13px;border-radius:9px}
+
+  /* ---------- scenarios ---------- */
+  .scenarios{padding:100px 0;background:var(--bg2)}
+  .sc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+  .sc-card{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:26px 22px;transition:transform .3s,border-color .3s;
+  }
+  .sc-card:hover{transform:translateY(-4px);border-color:var(--line2)}
+  .sc-card .tagi{
+    display:inline-block;padding:3px 10px;border-radius:6px;font-size:11px;font-weight:700;
+    background:rgba(91,140,255,.12);color:var(--accent2);margin-bottom:18px;letter-spacing:.4px;
+  }
+  .sc-card:nth-child(2n) .tagi{background:rgba(62,224,192,.12);color:var(--accent)}
+  .sc-card:nth-child(3n) .tagi{background:rgba(255,107,157,.12);color:var(--accent3)}
+  .sc-card:nth-child(4n) .tagi{background:rgba(255,204,77,.12);color:var(--warn)}
+  .sc-card h3{font-size:15.5px;font-weight:700;margin-bottom:10px;letter-spacing:.2px}
+  .sc-card p{font-size:13px;color:var(--txt2);margin-bottom:18px}
+  .sc-card .num-row{display:flex;align-items:baseline;gap:6px;font-family:var(--mono)}
+  .sc-card .num-row b{font-size:21px;font-weight:800;color:var(--txt)}
+  .sc-card .num-row span{font-size:11.5px;color:var(--txt3)}
+
+  /* ---------- process ---------- */
+  .process{padding:100px 0}
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;position:relative}
+  .steps::before{
+    content:'';position:absolute;top:34px;left:8%;right:8%;height:1px;
+    background:linear-gradient(90deg,transparent,var(--line2) 15%,var(--line2) 85%,transparent);
+    z-index:0;
+  }
+  .step{position:relative;z-index:1;text-align:center;padding:0 10px}
+  .step-n{
+    width:68px;height:68px;border-radius:20px;margin:0 auto 22px;
+    display:grid;place-items:center;font-family:var(--mono);font-size:19px;font-weight:800;
+    background:var(--bg3);border:1px solid var(--line2);color:var(--accent);
+    transition:transform .3s,border-color .3s,box-shadow .3s;
+  }
+  .step:hover .step-n{transform:translateY(-4px) rotate(-3deg);border-color:rgba(62,224,192,.5);box-shadow:0 12px 30px -12px rgba(62,224,192,.5)}
+  .step h3{font-size:16px;font-weight:700;margin-bottom:9px}
+  .step p{font-size:13px;color:var(--txt2)}
+
+  /* ---------- resources ---------- */
+  .resources{padding:100px 0;background:var(--bg2)}
+  .res-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:44px}
+  .res-list{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+  .res{
+    display:flex;align-items:center;gap:18px;padding:20px 22px;
+    background:var(--card);border:1px solid var(--line);border-radius:14px;
+    transition:border-color .25s,transform .25s;
+  }
+  .res:hover{border-color:var(--line2);transform:translateX(4px)}
+  .res-ico{
+    width:44px;height:44px;flex:none;border-radius:11px;display:grid;place-items:center;
+    background:rgba(91,140,255,.1);border:1px solid rgba(91,140,255,.22);
+    font-family:var(--mono);font-size:11px;font-weight:700;color:var(--accent2);
+  }
+  .res:nth-child(2n) .res-ico{background:rgba(62,224,192,.1);border-color:rgba(62,224,192,.22);color:var(--accent)}
+  .res:nth-child(3n) .res-ico{background:rgba(255,107,157,.1);border-color:rgba(255,107,157,.22);color:var(--accent3)}
+  .res-body{flex:1;min-width:0}
+  .res-body h3{font-size:14.5px;font-weight:650;margin-bottom:4px}
+  .res-body p{font-size:12.5px;color:var(--txt3)}
+  .res-arrow{color:var(--txt3);font-size:17px;transition:transform .25s,color .25s}
+  .res:hover .res-arrow{transform:translateX(4px);color:var(--accent)}
+
+  /* ---------- faq ---------- */
+  .faq{padding:100px 0}
+  .faq-wrap{max-width:900px;margin:0 auto}
+  .faq-item{border-bottom:1px solid var(--line);}
+  .faq-q{
+    width:100%;text-align:left;background:none;border:none;color:var(--txt);
+    font-family:inherit;font-size:15.5px;font-weight:650;padding:22px 44px 22px 0;
+    cursor:pointer;position:relative;transition:color .2s;
+  }
+  .faq-q:hover{color:var(--accent)}
+  .faq-q::after{
+    content:'+';position:absolute;right:8px;top:50%;transform:translateY(-50%);
+    font-size:22px;font-weight:400;color:var(--txt3);transition:transform .3s,color .3s;
+  }
+  .faq-item.open .faq-q::after{transform:translateY(-50%) rotate(45deg);color:var(--accent)}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease}
+  .faq-a p{font-size:14px;color:var(--txt2);padding:0 44px 24px 0;line-height:1.85}
+  .faq-a p b{color:var(--txt)}
+  .faq-item.open .faq-a{max-height:400px}
+
+  /* ---------- cta ---------- */
+  .cta{padding:100px 0 110px}
+  .cta-box{
+    position:relative;overflow:hidden;border-radius:26px;
+    background:linear-gradient(150deg,#101b2b,#0b1526 55%,#0f1226);
+    border:1px solid var(--line2);padding:64px 48px;text-align:center;
+  }
+  .cta-box::before{
+    content:'';position:absolute;inset:0;
+    background:
+      radial-gradient(ellipse 50% 80% at 15% 20%,rgba(62,224,192,.16),transparent 60%),
+      radial-gradient(ellipse 45% 70% at 85% 80%,rgba(91,140,255,.18),transparent 60%);
+    pointer-events:none;
+  }
+  .cta-box h2{position:relative;font-size:clamp(26px,3.6vw,42px);font-weight:800;letter-spacing:-.8px;margin-bottom:16px}
+  .cta-box p{position:relative;color:var(--txt2);font-size:15px;max-width:560px;margin:0 auto 34px}
+  .cta-form{position:relative;display:flex;gap:12px;max-width:480px;margin:0 auto;flex-wrap:wrap;justify-content:center}
+  .cta-form input{
+    flex:1;min-width:220px;padding:13px 18px;border-radius:11px;font-size:14px;
+    background:rgba(255,255,255,.04);border:1px solid var(--line2);color:var(--txt);
+    font-family:inherit;outline:none;transition:border-color .2s,background .2s;
+  }
+  .cta-form input::placeholder{color:var(--txt3)}
+  .cta-form input:focus{border-color:rgba(62,224,192,.6);background:rgba(255,255,255,.06)}
+  .form-msg{position:relative;margin-top:16px;font-size:13px;color:var(--accent);min-height:20px;font-weight:600}
+
+  /* ---------- footer ---------- */
+  footer{border-top:1px solid var(--line);background:var(--bg2);padding:60px 0 34px}
+  .foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px;margin-bottom:48px}
+  .foot-brand .brand{margin-bottom:16px}
+  .foot-brand p{font-size:13.5px;color:var(--txt3);max-width:280px;line-height:1.8}
+  .foot-col h4{font-size:12px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;color:var(--txt3);margin-bottom:18px}
+  .foot-col a{display:block;font-size:13.5px;color:var(--txt2);margin-bottom:11px;transition:color .2s}
+  .foot-col a:hover{color:var(--accent)}
+  .foot-bottom{
+    display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
+    padding-top:26px;border-top:1px solid var(--line);font-size:12.5px;color:var(--txt3);
+  }
+  .foot-bottom .mono{letter-spacing:.4px}
+
+  /* ---------- marquee ---------- */
+  .marquee{
+    border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+    background:rgba(15,20,32,.6);overflow:hidden;padding:14px 0;
+  }
+  .marquee-track{display:flex;gap:44px;width:max-content;animation:slide 32s linear infinite}
+  .marquee:hover .marquee-track{animation-play-state:paused}
+  .marquee-track span{
+    font-family:var(--mono);font-size:12px;color:var(--txt3);letter-spacing:1.2px;
+    display:flex;align-items:center;gap:10px;white-space:nowrap;text-transform:uppercase;
+  }
+  .marquee-track span::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--accent);opacity:.6}
+  @keyframes slide{to{transform:translateX(-50%)}}
+
+  /* ---------- reveal ---------- */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1)}
+  .reveal.in{opacity:1;transform:none}
+
+  /* ---------- responsive ---------- */
+  @media(max-width:1080px){
+    .hero-inner{grid-template-columns:1fr;gap:44px}
+    .term{transform:none;max-width:640px}
+    .feat-grid{grid-template-columns:repeat(2,1fr)}
+    .sc-grid{grid-template-columns:repeat(2,1fr)}
+    .steps{grid-template-columns:repeat(2,1fr);gap:36px}
+    .steps::before{display:none}
+    .foot-grid{grid-template-columns:1fr 1fr}
+  }
+  @media(max-width:760px){
+    .wrap{padding:0 20px}
+    .nav-links{display:none;position:absolute;top:68px;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:rgba(10,13,20,.98);border-bottom:1px solid var(--line);padding:10px 20px 20px}
+    .nav-links.open{display:flex}
+    .nav-links a{padding:12px 0;border-bottom:1px solid var(--line)}
+    .nav-cta{display:none}
+    .nav-toggle{display:block}
+    .hero{padding:120px 0 70px}
+    .feat-grid,.sc-grid,.res-list,.demo-main{grid-template-columns:1fr}
+    .demo-pane:first-child{border-right:none;border-bottom:1px solid var(--line)}
+    .steps{grid-template-columns:1fr}
+    .cta-box{padding:46px 24px}
+    .foot-grid{grid-template-columns:1fr;gap:30px}
+    .hero-stats{gap:26px}
+    .res-head{flex-direction:column;align-items:flex-start}
+  }
+</style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<!-- ================= NAV ================= -->
+<nav class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a href="#top" class="brand">
+      <span class="brand-mark">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#061018" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="4 7 4 4 20 4 20 7"></polyline>
+          <line x1="9" y1="20" x2="15" y2="20"></line>
+          <line x1="12" y1="4" x2="12" y2="20"></line>
+        </svg>
+      </span>
+      <span>乱码字幕工坊<small>SUBTITLE REPAIR LAB</small></span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a href="#features">核心能力</a>
+      <a href="#demo">修复演示</a>
+      <a href="#scenarios">应用场景</a>
+      <a href="#resources">资源中心</a>
+      <a href="#faq">常见问题</a>
+    </div>
+    <a href="#join" class="nav-cta">立即体验</a>
+    <button class="nav-toggle" id="navToggle" aria-label="打开菜单">☰</button>
+  </div>
+</nav>
+
+<!-- ================= HERO ================= -->
+<header class="hero" id="top">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="wrap hero-inner">
+    <div>
+      <div class="badge"><span class="dot"></span>2020 中文乱码字幕专项修复引擎已上线</div>
+      <h1>中文乱码字幕<span class="gtext">2020中文</span></h1>
+      <h2>让每一行字幕，都回到它本来的样子</h2>
+      <p class="hero-desc">
+        我们是一个专注 <b>中文乱码字幕2020中文</b> 修复与资源分享的视频字幕社区。无论是 GBK 与 UTF-8 编码互串、SRT 时间轴错位，还是 2020 年遗留的中文乱码字幕文件，都能在这里找到精准的检测、转换与修复方案。十年字幕整理经验，服务十万创作者。
+      </p>
+      <div class="hero-actions">
+        <a href="#demo" class="btn btn-primary">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+          在线试修复
+        </a>
+        <a href="#resources" class="btn btn-ghost">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          下载编码表
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><b>128,600+</b><span>累计修复字幕文件</span></div>
+        <div class="stat"><b>10,400+</b><span>社区创作者</span></div>
+        <div class="stat"><b>99.2%</b><span>乱码还原成功率</span></div>
+      </div>
+    </div>
+
+    <div class="term reveal">
+      <div class="term-bar">
+        <i></i><i></i><i></i>
+        <span class="term-title">subtitle-repair — zsh — 2020</span>
+      </div>
+      <div class="term-body">
+        <div class="ln"><span class="c">$</span><span>repair --input 2020中文.srt --detect</span></div>
+        <div class="ln dim"><span>检测到文件编码：GBK (0x00 ~ 0xFF 多字节)</span></div>
+        <div class="ln dim"><span>播放器期望编码：UTF-8</span></div>
+        <div class="garble">ÎÒÃÇµÄ×ÖÄ»³öÏÖÁËÂÒÂë...</div>
+        <div class="ln"><span class="w">!</span><span>匹配到 2,341 行疑似中文乱码</span></div>
+        <div class="ln"><span class="c">$</span><span>repair --convert gbk-to-utf8 --fix-timeline</span></div>
+        <div class="garble fixed">我们的字幕出现了乱码... 已还原 ✓</div>
+        <div class="ln"><span class="ok">✓</span><span>中文乱码字幕修复完成，共 2,341 行</span></div>
+        <div class="ln"><span class="ok">✓</span><span>时间轴偏移已校正 +0.42s</span></div>
+        <div class="ln"><span class="c">$</span><span class="cursor"></span></div>
+        <div class="term-progress"><i id="termBar"></i></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ================= MARQUEE ================= -->
+<div class="marquee">
+  <div class="marquee-track">
+    <span>GBK → UTF-8</span><span>SRT 时间轴校正</span><span>2020 中文乱码字幕</span><span>编码嗅探</span><span>批量转换</span><span>ASS / SSA 兼容</span><span>乱码还原算法</span><span>社区共享字幕库</span>
+    <span>GBK → UTF-8</span><span>SRT 时间轴校正</span><span>2020 中文乱码字幕</span><span>编码嗅探</span><span>批量转换</span><span>ASS / SSA 兼容</span><span>乱码还原算法</span><span>社区共享字幕库</span>
+  </div>
+</div>
+
+<!-- ================= FEATURES ================= -->
+<section class="features" id="features">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-tag">Core Capabilities</div>
+      <h2>专为中文乱码字幕2020中文打造的修复体系</h2>
+      <p>从编码识别到时间轴对齐，从单文件修复到批量处理，我们用一个完整的工具箱解决字幕显示问题。</p>
+    </div>
+    <div class="feat-grid">
+      <div class="feat reveal">
+        <span class="num">01</span>
+        <div class="feat-ico"><svg viewBox="0 0 24 24"><path d="M4 7V4h16v3"/><path d="M9 20h6"/><path d="M12 4v16"/></svg></div>
+        <h3>智能编码嗅探</h3>
+        <p>自动识别 GBK、GB2312、Big5、UTF-8、UTF-16 等十余种编码，精准判断 2020 年中文乱码字幕的原始编码来源。</p>
+      </div>
+      <div class="feat reveal">
+        <span class="num">02</span>
+        <div class="feat-ico"><svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-9-9"/><path d="M21 3v6h-6"/></svg></div>
+        <h3>一键乱码还原</h3>
+        <p>基于字节级映射的乱码还原算法，将「ÎÒÃÇ」类乱码文本重建为正常中文，恢复率高达 99.2%。</p>
+      </div>
+      <div class="feat reveal">
+        <span class="num">03</span>
+        <div class="feat-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+        <h3>时间轴校正</h3>
+        <p>检测字幕与视频之间的偏移量，支持整体平移、逐行微调与帧率换算，让 2020 中文乱码字幕与画面重新同步。</p>
+      </div>
+      <div class="feat reveal">
+        <span class="num">04</span>
+        <div class="feat-ico"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></div>
+        <h3>批量处理工作流</h3>
+        <p>支持拖拽上传整季剧集字幕，批量执行编码转换、乱码修复与格式统一，一次搞定 2020 中文乱码字幕合集。</p>
+      </div>
+      <div class="feat reveal">
+        <span class="num">05</span>
+        <div class="feat-ico"><svg viewBox="0 0 24 24"><path d="M12 2 2 7l10 5 10-5-10-5z"/><path d="m2 17 10 5 10-5"/><path d="m2 12 10 5 10-5"/></svg></div>
+        <h3>多格式兼容</h3>
+        <p>SRT、ASS、SSA、VTT、LRC 全格式互通，导出时自动选择播放器最友好的编码，杜绝二次乱码。</p>
+      </div>
+      <div class="feat reveal">
+        <span class="num">06</span>
+        <div class="feat-ico"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <h3>社区共建字幕库</h3>
+        <p>十万条经过校验的中文字幕资源，覆盖影视、课程、纪录片，每一份都标注了编码与时间轴信息。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= DEMO ================= -->
+<section class="demo" id="demo">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-tag">Live Playground</div>
+      <h2>亲眼看看中文乱码字幕2020中文如何被修复</h2>
+      <p>选择一个典型场景，查看乱码前后的对比。所有示例均来自社区真实提交的中文乱码字幕文件。</p>
+    </div>
+    <div class="demo-shell reveal">
+      <div class="demo-top">
+        <div class="demo-tabs">
+          <button class="demo-tab active" data-mode="gbk">GBK 乱码</button>
+          <button class="demo-tab" data-mode="utf16">UTF-16 乱码</button>
+          <button class="demo-tab" data-mode="timeline">时间轴错位</button>
+          <button class="demo-tab" data-mode="bom">BOM 头缺失</button>
+        </div>
+        <span class="mono" style="font-size:12px;color:var(--txt3)" id="demoLabel">mode: gbk</span>
+      </div>
+      <div class="demo-main">
+        <div class="demo-pane">
+          <div class="pane-label"><span class="led"></span>修复前 · 乱码预览</div>
+          <div class="code-block garbled" id="beforeBlock"></div>
+        </div>
+        <div class="demo-pane">
+          <div class="pane-label ok"><span class="led"></span>修复后 · 正常中文</div>
+          <div class="code-block" id="afterBlock"></div>
+        </div>
+      </div>
+      <div class="demo-foot">
+        <div class="demo-meta">
+          <span>原始编码：<b id="metaEnc">GBK</b></span>
+          <span>修复行数：<b id="metaLines">2341</b></span>
+          <span>匹配率：<b id="metaRate">99.2%</b></span>
+          <span>耗时：<b id="metaTime">0.84s</b></span>
+        </div>
+        <button class="btn btn-primary btn-sm" id="runDemo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+          重新演示修复
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SCENARIOS ================= -->
+<section class="scenarios" id="scenarios">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-tag">Use Cases</div>
+      <h2>他们都在用中文乱码字幕2020中文解决方案</h2>
+      <p>从个人追剧到专业影视后期，字幕乱码问题在各个场景下都有对应的处理路径。</p>
+    </div>
+    <div class="sc-grid">
+      <div class="sc-card reveal">
+        <span class="tagi">影视剧集</span>
+        <h3>老剧字幕抢救</h3>
+        <p>2020 年前后存档的剧集字幕多为 GBK 编码，在 4K 播放器上常显示为乱码，可批量转换恢复。</p>
+        <div class="num-row"><b>38,200</b><span>部剧集已修复</span></div>
+      </div>
+      <div class="sc-card reveal">
+        <span class="tagi">在线课程</span>
+        <h3>课件字幕统一</h3>
+        <p>教育机构录播课的字幕格式繁杂，统一转为 UTF-8 并修复中文乱码，保证多端播放一致。</p>
+        <div class="num-row"><b>12,600</b><span>门课程转码</span></div>
+      </div>
+      <div class="sc-card reveal">
+        <span class="tagi">短视频</span>
+        <h3>口播字幕校准</h3>
+        <p>自动生成字幕后出现中文乱码，配合时间轴校正，让短视频字幕与口型严丝合缝。</p>
+        <div class="num-row"><b>9,140</b><span>条短视频处理</span></div>
+      </div>
+      <div class="sc-card reveal">
+        <span class="tagi">纪录片</span>
+        <h3>多语字幕归档</h3>
+        <p>历史纪录片素材字幕编码各异，建立统一的中文乱码字幕2020中文标准后，归档检索效率提升 3 倍。</p>
+        <div class="num-row"><b>2,870</b><span>部纪录片归档</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROCESS ================= -->
+<section class="process" id="process">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-tag">Workflow</div>
+      <h2>四步完成中文乱码字幕修复</h2>
+      <p>不需要安装专业软件，打开网页即可开始处理你的中文乱码字幕2020中文文件。</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal">
+        <div class="step-n">01</div>
+        <h3>上传字幕</h3>
+        <p>拖拽 SRT / ASS 文件到工作区，或从社区字幕库搜索已有资源。</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-n">02</div>
+        <h3>编码嗅探</h3>
+        <p>系统自动分析字节序列，判断文件原始编码与乱码成因。</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-n">03</div>
+        <h3>修复预览</h3>
+        <p>逐行对比乱码与还原结果，手动微调未能自动识别的行。</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-n">04</div>
+        <h3>导出下载</h3>
+        <p>选择目标编码与格式，一键导出修复后的中文字幕文件。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= RESOURCES ================= -->
+<section class="resources" id="resources">
+  <div class="wrap">
+    <div class="res-head reveal">
+      <div class="sec-head" style="margin-bottom:0">
+        <div class="sec-tag">Resources</div>
+        <h2>中文乱码字幕2020中文资料库</h2>
+        <p>编码对照表、修复脚本与历史案例，全部开放获取。</p>
+      </div>
+      <a href="#join" class="btn btn-ghost btn-sm">查看全部资源 →</a>
+    </div>
+    <div class="res-list">
+      <a href="#join" class="res reveal">
+        <div class="res-ico">TBL</div>
+        <div class="res-body"><h3>GBK ↔ UTF-8 对照表</h3><p>覆盖 21,886 个汉字，包含扩展 A 区字符映射</p></div>
+        <span class="res-arrow">→</span>
+      </a>
+      <a href="#join" class="res reveal">
+        <div class="res-ico">SRT</div>
+        <div class="res-body"><h3>2020 中文乱码字幕样本集</h3><p>1,200 份真实乱码文件，用于验证修复算法</p></div>
+        <span class="res-arrow">→</span>
+      </a>
+      <a href="#join" class="res reveal">
+        <div class="res-ico">PY</div>
+        <div class="res-body"><h3>批量转码 Python 脚本</h3><p>命令行工具，支持目录递归与编码自动检测</p></div>
+        <span class="res-arrow">→</span>
+      </a>
+      <a href="#join" class="res reveal">
+        <div class="res-ico">DOC</div>
+        <div class="res-body"><h3>乱码成因白皮书</h3><p>从字节原理讲起，彻底理解字幕为什么乱码</p></div>
+        <span class="res-arrow">→</span>
+      </a>
+      <a href="#join" class="res reveal">
+        <div class="res-ico">ASS</div>
+        <div class="res-body"><h3>ASS 样式模板合集</h3><p>48 套中文字幕样式，兼容主流播放器</p></div>
+        <span class="res-arrow">→</span>
+      </a>
+      <a href="#join" class="res reveal">
+        <div class="res-ico">API</div>
+        <div class="res-body"><h3>字幕修复开放接口</h3><p>RESTful API，返回 JSON 格式修复结果</p></div>
+        <span class="res-arrow">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FAQ ================= -->
+<section class="faq" id="faq">
+  <div class="wrap">
+    <div class="sec-head reveal" style="margin-left:auto;margin-right:auto;text-align:center">
+      <div class="sec-tag" style="justify-content:center">FAQ</div>
+      <h2>关于中文乱码字幕2020中文的常见疑问</h2>
+    </div>
+    <div class="faq-wrap">
+      <div class="faq-item">
+        <button class="faq-q">为什么我的中文字幕在播放器里显示成乱码？</button>
+        <div class="faq-a"><p>最常见的原因是<b>字幕文件编码与播放器预期编码不一致</b>。例如文件以 GBK 保存，而播放器以 UTF-8 读取，中文就会被解析成「ÎÒÃÇ」这类字符。使用本站的编码嗅探功能即可定位并一键转换。</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">2020 年制作的中文乱码字幕还能修复吗？</button>
+        <div class="faq-a"><p>可以。2020 年前后的字幕文件多为 GBK 或 GB2312 编码，只要原始字节未损坏，<b>中文乱码字幕2020中文</b> 修复工具都能通过字节映射还原出正确汉字，社区已成功修复超过 12 万份同类文件。</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">修复后的字幕会丢失时间轴信息吗？</button>
+        <div class="faq-a"><p>不会。我们的处理流程分为编码修复与时间轴校正两个独立步骤，<b>编码转换只修改文本字节，不触碰时间码</b>。若发现字幕与画面不同步，可额外启用时间轴校正模块。</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">支持哪些字幕格式与语言？</button>
+        <div class="faq-a"><p>支持 SRT、ASS、SSA、VTT、LRC、SUB 等主流格式，重点优化中文（简体/繁体）、日文与韩文的乱码识别。英文及拉丁语系文件也可以处理，只是乱码表现不如中文典型。</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">批量处理有文件数量限制吗？</button>
+        <div class="faq-a"><p>网页版单次最多处理 50 个文件，单文件不超过 10MB。如需处理整季剧集或大型字幕库，可使用我们提供的命令行脚本或开放接口，无数量限制。</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CTA ================= -->
+<section class="cta" id="join">
+  <div class="wrap">
+    <div class="cta-box reveal">
+      <h2>现在就开始修复你的中文乱码字幕2020中文文件</h2>
+      <p>留下邮箱，即可获取完整的编码对照表、批量修复脚本与社区字幕库访问权限。</p>
+      <form class="cta-form" id="joinForm">
+        <input type="email" id="joinEmail" placeholder="you@example.com" required>
+        <button type="submit" class="btn btn-primary">免费获取资源包</button>
+      </form>
+      <div class="form-msg" id="formMsg"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="#top" class="brand">
+          <span class="brand-mark">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#061018" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="4 7 4 4 20 4 20 7"></polyline>
+              <line x1="9" y1="20" x2="15" y2="20"></line>
+              <line x1="12" y1="4" x2="12" y2="20"></line>
+            </svg>
+          </span>
+          <span>乱码字幕工坊<small>SUBTITLE REPAIR LAB</small></span>
+        </a>
+        <p>专注中文乱码字幕2020中文的修复、转换与社区共建。让每一行字幕，都能被正确读懂。</p>
+      </div>
+      <div class="foot-col">
+        <h4>产品</h4>
+        <a href="#demo">在线修复</a>
+        <a href="#features">功能总览</a>
+        <a href="#resources">资源中心</a>
+        <a href="#join">开放接口</a>
+      </div>
+      <div class="foot-col">
+        <h4>社区</h4>
+        <a href="#scenarios">应用案例</a>
+        <a href="#faq">常见问题</a>
+        <a href="#join">字幕投稿</a>
+        <a href="#join">创作者计划</a>
+      </div>
+      <div class="foot-col">
+        <h4>关于</h4>
+        <a href="#join">团队介绍</a>
+        <a href="#join">更新日志</a>
+        <a href="#join">联系合作</a>
+        <a href="#join">隐私条款</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span class="mono">© 2020–2024 SUBTITLE REPAIR LAB · 中文乱码字幕2020中文</span>
+      <span>用对编码，字幕就不会迷路</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  'use strict';
+
+  /* ---------- nav scroll ---------- */
+  var nav = document.getElementById('nav');
+  function onScroll(){
+    if(window.scrollY > 12){ nav.classList.add('scrolled'); }
+    else{ nav.classList.remove('scrolled'); }
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  /* ---------- mobile menu ---------- */
+  var toggle = document.getElementById('navToggle');
+  var links = document.getElementById('navLinks');
+  toggle.addEventListener('click', function(){
+    links.classList.toggle('open');
+    toggle.textContent = links.classList.contains('open') ? '✕' : '☰';
+  });
+  links.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      links.classList.remove('open');
+      toggle.textContent = '☰';
+    });
+  });
+
+  /* ---------- reveal on scroll ---------- */
+  var revealEls = document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){
+          en.target.classList.add('in');
+          io.unobserve(en.target);
+        }
+      });
+    }, {threshold:0.12, rootMargin:'0px 0px -40px 0px'});
+    revealEls.forEach(function(el){ io.observe(el); });
+  } else {
+    revealEls.forEach(function(el){ el.classList.add('in'); });
+  }
+
+  /* ---------- feature hover radial ---------- */
+  document.querySelectorAll('.feat').forEach(function(card){
+    card.addEventListener('mousemove', function(e){
+      var r = card.getBoundingClientRect();
+      card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+      card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+    });
+  });
+
+  /* ---------- terminal progress ---------- */
+  var termBar = document.getElementById('termBar');
+  function runTermBar(){
+    if(!termBar) return;
+    termBar.style.width = '0%';
+    setTimeout(function(){ termBar.style.width = '100%'; }, 300);
+  }
+  setTimeout(runTermBar, 600);
+
+  /* ---------- demo playground ---------- */
+  var demoData = {
+    gbk: {
+      label: 'mode: gbk',
+      enc: 'GBK',
+      lines: '2,341',
+      rate: '99.2%',
+      time: '0.84s',
+      before:
+'1\n00:00:01,200 --> 00:00:04,100\nÎÒÃÇµÄÖÐÎÄ×ÖÄ»³öÏÖÁËÂÒÂë\n\n2\n00:00:04,300 --> 00:00:07,800\nÕâÊÇ2020ÄêÁô´æµÄ×ÖÄ»ÎÄ¼þ\n\n3\n00:00:08,000 --> 00:00:11,500\n±àÂë²»Ò»ÖÂµ¼ÖÂÎÞ·¨ÔÄ¶Á\n\n4\n00:00:11,700 --> 00:00:15,200\nÇëÊ¹ÓÃ×ÖÄ»ÐÞ¸´¹¤¾ß',
+      after:
+'1\n00:00:01,200 --> 00:00:04,100\n我们的中文字幕出现了乱码\n\n2\n00:00:04,300 --> 00:00:07,800\n这是2020年留存的字幕文件\n\n3\n00:00:08,000 --> 00:00:11,500\n编码不一致导致无法阅读\n\n4\n00:00:11,700 --> 00:00:15,200\n请使用字幕修复工具'
+    },
+    utf16: {
+      label: 'mode: utf16',
+      enc: 'UTF-16LE',
+      lines: '1,876',
+      rate: '98.7%',
+      time: '1.12s',
+      before:
+'1\n00:00:00,500 --> 00:00:03,200\n\\u00fe\\u00ff\\u4f60\\u597d\\u4e16\\u754c\n\n2\n00:00:03,400 --> 00:00:06,000\n\\ufffd\\ufffd\\ufffd\\ufffd\\ufffd\\ufffd\n\n3\n00:00:06,200 --> 00:00:09,800\n\\u4e2d\\u6587\\u4e71\\u7801\\u5b57\\u5e55\n\n4\n00:00:10,000 --> 00:00:13,500\n\\ufffd\\ufffd 2020 \\ufffd\\ufffd',
+      after:
+'1\n00:00:00,500 --> 00:00:03,200\n你好世界\n\n2\n00:00:03,400 --> 00:00:06,000\n字幕内容已恢复\n\n3\n00:00:06,200 --> 00:00:09,800\n中文乱码字幕\n\n4\n00:00:10,000 --> 00:00:13,500\n2020 中文文件'
+    },
+    timeline: {
+      label: 'mode: timeline',
+      enc: 'UTF-8',
+      lines: '3,402',
+      rate: '100%',
+      time: '0.56s',
+      before:
+'1\n00:00:00,000 --> 00:00:01,500\n（字幕提前 3 秒出现）\n\n2\n00:00:01,600 --> 00:00:04,000\n第一句台词对不上口型\n\n3\n00:00:04,100 --> 00:00:07,200\n第二句台词同样偏移\n\n4\n00:00:07,300 --> 00:00:10,000\n整体需要 +3.0s 校正',
+      after:
+'1\n00:00:03,000 --> 00:00:04,500\n（已整体平移 +3.0s）\n\n2\n00:00:04,600 --> 00:00:07,000\n第一句台词与口型对齐\n\n3\n00:00:07,100 --> 00:00:10,200\n第二句台词同步完成\n\n4\n00:00:10,300 --> 00:00:13,000\n时间轴校正完毕'
+    },
+    bom: {
+      label: 'mode: bom',
+      enc: 'UTF-8 无 BOM',
+      lines: '1,204',
+      rate: '97.5%',
+      time: '0.63s',
+      before:
+'1\n00:00:02,000 --> 00:00:05,000\n ef bb bf 中文字幕示例\n\n2\n00:00:05,200 --> 00:00:08,100\n播放器误判为 ANSI 编码\n\n3\n00:00:08,300 --> 00:00:11,400\n开头出现多余字符\n\n4\n00:00:11,600 --> 00:00:14,900\n2020 中文乱码字幕案例',
+      after:
+'1\n00:00:02,000 --> 00:00:05,000\n中文字幕示例\n\n2\n00:00:05,200 --> 00:00:08,100\n已补写 BOM 并统一编码\n\n3\n00:00:08,300 --> 00:00:11,400\n开头多余字符已清除\n\n4\n00:00:11,600 --> 00:00:14,900\n2020 中文乱码字幕案例'
+    }
+  };
+
+  var beforeBlock = document.getElementById('beforeBlock');
+  var afterBlock = document.getElementById('afterBlock');
+  var demoLabel = document.getElementById('demoLabel');
+  var metaEnc = document.getElementById('metaEnc');
+  var metaLines = document.getElementById('metaLines');
+  var metaRate = document.getElementById('metaRate');
+  var metaTime = document.getElementById('metaTime');
+  var tabs = document.querySelectorAll('.demo-tab');
+  var currentMode = 'gbk';
+
+  function typeText(el, text, speed, done){
+    el.textContent = '';
+    var i = 0;
+    var timer = setInterval(function(){
+      el.textContent += text.charAt(i);
+      i++;
+      if(i >= text.length){
+        clearInterval(timer);
+        if(done) done();
+      }
+    }, speed);
+  }
+
+  function renderDemo(mode, animate){
+    var d = demoData[mode];
+    currentMode = mode;
+    demoLabel.textContent = d.label;
+    metaEnc.textContent = d.enc;
+    metaLines.textContent = d.lines;
+    metaRate.textContent = d.rate;
+    metaTime.textContent = d.time;
+    if(animate){
+      typeText(beforeBlock, d.before, 4, function(){
+        typeText(afterBlock, d.after, 4);
+      });
+    } else {
+      beforeBlock.textContent = d.before;
+      afterBlock.textContent = d.after;
+    }
+  }
+
+  tabs.forEach(function(tab){
+    tab.addEventListener('click', function(){
+      tabs.forEach(function(t){ t.classList.remove('active'); });
+      tab.classList.add('active');
+      renderDemo(tab.getAttribute('data-mode'), true);
+    });
+  });
+
+  document.getElementById('runDemo').addEventListener('click', function(){
+    renderDemo(currentMode, true);
+  });
+
+  /* initial demo render with a slight delay for reveal */
+  renderDemo('gbk', false);
+  setTimeout(function(){ renderDemo('gbk', true); }, 900);
+
+  /* ---------- faq accordion ---------- */
+  document.querySelectorAll('.faq-item').forEach(function(item){
+    var q = item.querySelector('.faq-q');
+    q.addEventListener('click', function(){
+      var isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(function(it){
+        it.classList.remove('open');
+      });
+      if(!isOpen){ item.classList.add('open'); }
+    });
+  });
+
+  /* ---------- join form ---------- */
+  var form = document.getElementById('joinForm');
+  var email = document.getElementById('joinEmail');
+  var msg = document.getElementById('formMsg');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var v = email.value.trim();
+    var ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+    if(!ok){
+      msg.style.color = '#ff6b9d';
+      msg.textContent = '请输入有效的邮箱地址，方便我们发送资源包。';
+      return;
+    }
+    msg.style.color = 'var(--accent)';
+    msg.textContent = '已收到！资源包将发送至 ' + v + '，请留意查收。';
+    email.value = '';
+  });
+
+  /* ---------- smooth anchor offset ---------- */
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      var id = a.getAttribute('href');
+      if(id.length < 2) return;
+      var target = document.querySelector(id);
+      if(!target) return;
+      e.preventDefault();
+      var top = target.getBoundingClientRect().top + window.scrollY - 78;
+      window.scrollTo({top: top, behavior:'smooth'});
+    });
+  });
+
+})();
+</script>
+</body>
+  </html>
